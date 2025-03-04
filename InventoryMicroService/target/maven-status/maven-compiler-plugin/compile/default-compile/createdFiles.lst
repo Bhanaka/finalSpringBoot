@@ -1,0 +1,8 @@
+com/wings/inventory/Service/UserService.class
+com/wings/inventory/Controller/HelloJavaController.class
+com/wings/inventory/Repository/UserRepository.class
+com/wings/inventory/Service/UserService$1.class
+com/wings/inventory/Dto/UserDTO.class
+com/wings/inventory/Controller/UserController.class
+com/wings/inventory/InventoryApplication.class
+com/wings/inventory/Model/UserEntity.class
