@@ -1,10 +1,16 @@
 com/wings/usermanagement/Repository/UserRepository.class
 com/wings/usermanagement/Model/UserEntity.class
 com/wings/usermanagement/Controller/HelloJavaController.class
+com/wings/usermanagement/Class/MyUserDetailsService.class
 com/wings/usermanagement/Dto/UserDTO.class
+com/wings/usermanagement/Service/JWTService.class
 com/wings/usermanagement/Service/UserService$1.class
 com/wings/usermanagement/Model/TbUserLevel.class
 com/wings/usermanagement/UserApplication.class
 com/wings/usermanagement/Service/UserService.class
+com/wings/usermanagement/Controller/AuthController.class
 com/wings/usermanagement/Repository/UserLevelRepository.class
 com/wings/usermanagement/Controller/UserController.class
+com/wings/usermanagement/Config/SecurityConfig.class
+com/wings/usermanagement/Model/TbUser.class
+com/wings/usermanagement/Repository/UserDetailsRepository.class

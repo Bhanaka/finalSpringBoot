@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.wings.inventory.LearnApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.886 s -- in com.wings.inventory.LearnApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.942 s -- in com.wings.inventory.LearnApplicationTests

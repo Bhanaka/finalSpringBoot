@@ -1,14 +1,15 @@
 package com.wings.inventory.Dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//@Setter
+//@Getter
 public class InventoryItemDTO {
-    private Integer itemId ;
+    public Integer itemId ;
     private String itemCode ;
     private String itemName ;
     private String itemBrand ;

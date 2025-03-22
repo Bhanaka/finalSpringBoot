@@ -1,6 +1,11 @@
 package com.wings.inventory.Controller;
 
+import com.wings.inventory.Dto.InventoryItemDTO;
+import com.wings.inventory.Service.InventoryItemService;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -10,8 +15,12 @@ import java.io.IOException;
 @RequestMapping(value = "/api/inventory")
 
 public class InventoryItemController {
+    @Autowired
+    private InventoryItemService inventoryItemService ;
     @PostMapping("/create_item")
-    public void createInventoryItem(){
+    public ResponseEntity<InventoryItemDTO> createInventoryItem(@RequestBody InventoryItemDTO itemDTO){
+        InventoryItemDTO inventoryItemDTO = inventoryItemService.createInventoryItem(itemDTO) ;
+        return  new ResponseEntity<>(inventoryItemDTO , HttpStatus.CREATED);
     }
     @GetMapping("get_item/{id}")
     public void getInventoryItem(@PathVariable Long id){}
