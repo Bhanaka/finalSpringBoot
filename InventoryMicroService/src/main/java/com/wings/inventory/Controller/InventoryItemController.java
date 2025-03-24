@@ -1,6 +1,7 @@
 package com.wings.inventory.Controller;
 
 import com.wings.inventory.Dto.InventoryItemDTO;
+import com.wings.inventory.Model.InventoryItemEntity;
 import com.wings.inventory.Service.InventoryItemService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -28,9 +30,10 @@ public class InventoryItemController {
     public void updateInventoryItem(@PathVariable Long id){}
     @DeleteMapping("/delete_item/{id}")
     public void deleteInventoryItem(@PathVariable Long id){}
+
     @GetMapping("/get_items")
-    public void getAllInventoryItems(){
-        System.out.println("hi");
+    public List<InventoryItemEntity> getAllInventoryItems(){
+         return inventoryItemService.getAllInventoryItems();
     }
     @GetMapping("/hello")
     public void printHello(HttpServletResponse response) throws IOException {
