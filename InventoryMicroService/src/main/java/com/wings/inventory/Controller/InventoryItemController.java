@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -25,7 +26,16 @@ public class InventoryItemController {
         return  new ResponseEntity<>(inventoryItemDTO , HttpStatus.CREATED);
     }
     @GetMapping("get_item/{id}")
-    public void getInventoryItem(@PathVariable Long id){}
+    public ResponseEntity<InventoryItemEntity> getInventoryItem(@PathVariable Long id){
+        Optional<InventoryItemEntity> item = inventoryItemService.findById(id) ;
+        //If found, return 200 OK with the item
+        if(item.isPresent()){
+            return ResponseEntity.ok(item.get());
+        }else{
+            // If not found, return 404 Not Found
+            return ResponseEntity.notFound().build();
+        }
+    }
     @PutMapping("/update_item/{id}")
     public void updateInventoryItem(@PathVariable Long id){}
     @DeleteMapping("/delete_item/{id}")
