@@ -20,6 +20,7 @@ import java.util.Optional;
 public class InventoryItemController {
     @Autowired
     private InventoryItemService inventoryItemService ;
+
     @PostMapping("/create_item")
     public ResponseEntity<InventoryItemDTO> createInventoryItem(@RequestBody InventoryItemDTO itemDTO){
         InventoryItemDTO inventoryItemDTO = inventoryItemService.createInventoryItem(itemDTO) ;
@@ -37,7 +38,11 @@ public class InventoryItemController {
         }
     }
     @PutMapping("/update_item/{id}")
-    public void updateInventoryItem(@PathVariable Long id){}
+    public ResponseEntity<InventoryItemDTO> updateInventoryItem(@PathVariable Long id , @RequestBody InventoryItemDTO updateItemDTO){
+        InventoryItemDTO inventoryItemDTO = inventoryItemService.updatedItem(id,updateItemDTO) ;
+        return ResponseEntity.ok(inventoryItemDTO);
+    }
+
     @DeleteMapping("/delete_item/{id}")
     public void deleteInventoryItem(@PathVariable Long id){}
 
@@ -49,7 +54,6 @@ public class InventoryItemController {
     public void printHello(HttpServletResponse response) throws IOException {
         // Set the content type to plain text
         response.setContentType("text/plain");
-
         // Write "Hello" to the response body
         response.getWriter().write("Hello");
     }
