@@ -53,7 +53,6 @@ public class InventoryItemService {
         inventoryItemDTO.setItemId(itemEntity.getId());
         inventoryItemDTO.setItemBrand(itemEntity.getItemBrand());
         inventoryItemDTO.setItemCode(itemEntity.getItemCode());
-
         System.out.printf(String.valueOf(inventoryItemDTO));
         return  inventoryItemDTO ;
     }
