@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 //@Transactional
@@ -43,5 +44,16 @@ public class InventoryItemService {
     }
     public List<InventoryItemEntity> getAllInventoryItems(){
         return inventoryItemRepository.findAll();
+    }
+    public Optional<InventoryItemEntity> findById(Long id){
+        return inventoryItemRepository.findById(id);
+    }
+    public InventoryItemDTO updatedItem(Long id , InventoryItemDTO inventoryItemDTO){
+        InventoryItemEntity itemEntity = inventoryItemRepository.findById(id).orElseThrow();
+        inventoryItemDTO.setItemId(itemEntity.getId());
+        inventoryItemDTO.setItemBrand(itemEntity.getItemBrand());
+        inventoryItemDTO.setItemCode(itemEntity.getItemCode());
+        System.out.printf(String.valueOf(inventoryItemDTO));
+        return  inventoryItemDTO ;
     }
 }

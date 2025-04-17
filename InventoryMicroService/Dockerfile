@@ -1,4 +1,4 @@
-#step 1 : use an official java rum time as the base image
+#step 1 : use an official java rum time as the base image .
 FROM maven:3.6.3-openjdk-17-slim
 ARG VERSION=1.0-SNAPSHOT
 
