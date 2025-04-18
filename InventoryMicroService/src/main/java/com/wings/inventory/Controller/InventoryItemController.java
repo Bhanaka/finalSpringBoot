@@ -16,6 +16,7 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/inventory")
+@ControllerAdvice
 
 public class InventoryItemController {
     @Autowired
@@ -28,14 +29,16 @@ public class InventoryItemController {
     }
     @GetMapping("get_item/{id}")
     public ResponseEntity<InventoryItemEntity> getInventoryItem(@PathVariable Long id){
-        Optional<InventoryItemEntity> item = inventoryItemService.findById(id) ;
+        ResponseEntity<InventoryItemEntity> item = inventoryItemService.findById(id) ;
+        return ResponseEntity.ok(item.getBody());
         //If found, return 200 OK with the item
-        if(item.isPresent()){
-            return ResponseEntity.ok(item.get());
-        }else{
-            // If not found, return 404 Not Found
-            return ResponseEntity.notFound().build();
-        }
+//        if(item.isPresent()){
+//            return ResponseEntity.ok(item.get());
+//        }else{
+//            // If not found, return 404 Not Found
+////            return ResponseEntity.notFound().build();
+//             throw new RuntimeException("item id not found ");
+//        }
     }
     @PutMapping("/update_item/{id}")
     public ResponseEntity<InventoryItemDTO> updateInventoryItem(@PathVariable Long id , @RequestBody InventoryItemDTO updateItemDTO){
@@ -48,11 +51,11 @@ public class InventoryItemController {
 
     @GetMapping("/get_items")
     public List<InventoryItemEntity> getAllInventoryItems(){
-        try{
+//        try{
             return inventoryItemService.getAllInventoryItems();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
     }
     @GetMapping("/hello")
