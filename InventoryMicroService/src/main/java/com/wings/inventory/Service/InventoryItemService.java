@@ -1,6 +1,7 @@
 package com.wings.inventory.Service;
 
 import com.wings.inventory.Dto.InventoryItemDTO;
+import com.wings.inventory.Exception.ItemNotFoundException;
 import com.wings.inventory.Model.InventoryItemEntity;
 import com.wings.inventory.Repository.InventoryItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,6 @@ public class InventoryItemService {
         return inventoryItemRepository.findAll();
     }
     public ResponseEntity<InventoryItemEntity> findById(Long id){
-//        return inventoryItemRepository.findById(id);
         Optional<InventoryItemEntity> item = inventoryItemRepository.findById(id) ;
         //If found, return 200 OK with the item
         if(item.isPresent()){
@@ -56,7 +56,10 @@ public class InventoryItemService {
         }else{
             // If not found, return 404 Not Found
 //            return ResponseEntity.notFound().build();
-            throw new RuntimeException("item id not found ");
+            // exception handler
+//            throw new RuntimeException("item id not found ");
+            // create custom exception handler
+            throw  new ItemNotFoundException("Inventory Item Not Found");
         }
     }
     public InventoryItemDTO updatedItem(Long id , InventoryItemDTO inventoryItemDTO){
