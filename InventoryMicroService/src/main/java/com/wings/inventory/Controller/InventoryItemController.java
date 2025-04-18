@@ -48,7 +48,12 @@ public class InventoryItemController {
 
     @GetMapping("/get_items")
     public List<InventoryItemEntity> getAllInventoryItems(){
-         return inventoryItemService.getAllInventoryItems();
+        try{
+            return inventoryItemService.getAllInventoryItems();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
     @GetMapping("/hello")
     public void printHello(HttpServletResponse response) throws IOException {
