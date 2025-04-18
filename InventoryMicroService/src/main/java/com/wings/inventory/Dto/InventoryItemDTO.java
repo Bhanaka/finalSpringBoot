@@ -9,7 +9,7 @@ import lombok.*;
 //@Setter
 //@Getter
 public class InventoryItemDTO {
-    public Integer itemId ;
+    public Long itemId ;
     private String itemCode ;
     private String itemName ;
     private String itemBrand ;
