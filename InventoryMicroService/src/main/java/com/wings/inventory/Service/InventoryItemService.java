@@ -50,17 +50,18 @@ public class InventoryItemService {
     }
 
     public ResponseEntity<InventoryItemEntity> findById(Long id){
+        if(id == null || id < 0 ){
+            throw new IllegalArgumentException("Invalid Id : ID must be a positive number ");
+        }
         Optional<InventoryItemEntity> item = inventoryItemRepository.findById(id) ;
-        //If found, return 200 OK with the item
-        if(item.isPresent()){
-            return ResponseEntity.ok(item.get());
-        }else{
-            // If not found, return 404 Not Found
-//            return ResponseEntity.notFound().build();
-            // exception handler
-//            throw new RuntimeException("item id not found ");
-            // create custom exception handler
-            throw  new ItemNotFoundException("Inventory Item Not Found");
+        try{
+            if(item.isPresent()){
+                return ResponseEntity.ok(item.get());
+            }else{
+                throw  new ItemNotFoundException("Inventory Item Not Found");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Unexpected error occurred while fetching item with ID: " + id, e);
         }
     }
     public InventoryItemDTO updatedItem(Long id , InventoryItemDTO inventoryItemDTO){
