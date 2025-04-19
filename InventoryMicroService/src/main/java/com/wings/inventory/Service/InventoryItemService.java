@@ -48,6 +48,7 @@ public class InventoryItemService {
     public List<InventoryItemEntity> getAllInventoryItems(){
         return inventoryItemRepository.findAll();
     }
+
     public ResponseEntity<InventoryItemEntity> findById(Long id){
         Optional<InventoryItemEntity> item = inventoryItemRepository.findById(id) ;
         //If found, return 200 OK with the item
