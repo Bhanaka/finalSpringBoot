@@ -17,6 +17,7 @@
 <!--     <module>OrdermicroService</module>-->
     <module>UserMicroService</module>
     <module>InventoryMicroService</module>
+      <module>ProductMicroService</module>
   </modules>
   <dependencies>
     <dependency>
