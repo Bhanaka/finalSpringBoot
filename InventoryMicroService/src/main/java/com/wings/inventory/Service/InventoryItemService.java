@@ -1,11 +1,13 @@
 package com.wings.inventory.Service;
 
 import com.wings.inventory.Dto.InventoryItemDTO;
+import com.wings.inventory.Exception.ItemNotFoundException;
 import com.wings.inventory.Model.InventoryItemEntity;
 import com.wings.inventory.Repository.InventoryItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -45,8 +47,21 @@ public class InventoryItemService {
     public List<InventoryItemEntity> getAllInventoryItems(){
         return inventoryItemRepository.findAll();
     }
-    public Optional<InventoryItemEntity> findById(Long id){
-        return inventoryItemRepository.findById(id);
+
+    public ResponseEntity<InventoryItemEntity> findById(Long id){
+        if(id == null || id < 0 ){
+            throw new IllegalArgumentException("Invalid Id : ID must be a positive number ");
+        }
+        Optional<InventoryItemEntity> item = inventoryItemRepository.findById(id) ;
+        try{
+            if(item.isPresent()){
+                return ResponseEntity.ok(item.get());
+            }else{
+                throw  new ItemNotFoundException("Inventory Item Not Found");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Unexpected error occurred while fetching item with ID: " + id, e);
+        }
     }
     public InventoryItemDTO updatedItem(Long id , InventoryItemDTO inventoryItemDTO){
         InventoryItemEntity itemEntity = inventoryItemRepository.findById(id).orElseThrow();
