@@ -4,6 +4,7 @@
     <excludeFromCompile>
       <directory url="file://$PROJECT_DIR$/InventoryMicroService/src/main/resources/archetype-resources" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/UserMicroService/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/ProductMicroService/src/main/resources/archetype-resources" includeSubdirectories="true" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
@@ -12,6 +13,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="InventoryMicroService" />
+        <module name="ProductMicroService" />
         <module name="UserMicroService" />
       </profile>
     </annotationProcessing>
@@ -19,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="InventoryMicroService" options="-parameters" />
+      <module name="ProductMicroService" options="-parameters" />
       <module name="UserMicroService" options="-parameters" />
     </option>
   </component>
