@@ -1,0 +1,3 @@
+InventoryMicroService\src\main\resources\application.properties
+ProductMicroService\src\main\resources\application.properties
+UserMicroService\src\main\resources\application.properties
