@@ -27,6 +27,11 @@ public class ProductController {
         ProductItemEntity save = productItemService.saveProductItem(productRequest);
         return ResponseEntity.ok(save) ;
     }
+    @GetMapping("allproduct")
+    public  List<ProductBrandEntity> getAllProduct(){
+        List productList =  productItemService.getAllProduct() ;
+        return productList ;
+    }
     @GetMapping("/get_all_brands")
     public List<ProductBrandEntity> getAllBrands(){
         List brandList =productBrandService.getAllProductBrand() ;

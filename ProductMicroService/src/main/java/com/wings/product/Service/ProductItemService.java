@@ -6,6 +6,8 @@ import com.wings.product.Repository.ProductItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductItemService {
 
@@ -27,5 +29,9 @@ public class ProductItemService {
 
         // save and return the saved entity
         return productItemRepository.save(itemSave) ;
+    }
+    public List<ProductItemEntity> getAllProduct(){
+        List productList = productItemRepository.findAll();
+        return productList ;
     }
 }
